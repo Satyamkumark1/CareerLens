@@ -1,7 +1,7 @@
 package CareerLens.demo.services;
 
 import CareerLens.demo.exceptions.ResourceNotFoundException;
-import CareerLens.demo.payloads.UserDTO;
+import CareerLens.demo.payloads.userDTOs.UserDTO;
 import CareerLens.demo.repository.UserRepository;
 
 import org.modelmapper.ModelMapper;

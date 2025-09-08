@@ -2,8 +2,8 @@ package CareerLens.demo.controller;
 
 import CareerLens.demo.payloads.ApiResponse;
 import CareerLens.demo.payloads.JwtAuthResponse;
-import CareerLens.demo.payloads.LoginRequest;
-import CareerLens.demo.payloads.UserRegistrationRequest;
+import CareerLens.demo.payloads.userDTOs.LoginRequest;
+import CareerLens.demo.payloads.userDTOs.UserRegistrationRequest;
 import CareerLens.demo.services.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

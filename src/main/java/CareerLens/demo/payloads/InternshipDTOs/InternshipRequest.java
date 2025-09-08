@@ -1,4 +1,4 @@
-package CareerLens.demo.payloads;
+package CareerLens.demo.payloads.InternshipDTOs;
 
 
 import jakarta.validation.constraints.NotBlank;

@@ -1,6 +1,6 @@
 package CareerLens.demo.controller;
 
-import CareerLens.demo.payloads.UserDTO;
+import CareerLens.demo.payloads.userDTOs.UserDTO;
 import CareerLens.demo.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

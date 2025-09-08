@@ -2,10 +2,10 @@ package CareerLens.demo.services;
 
 import CareerLens.demo.exceptions.ResourceNotFoundException;
 import CareerLens.demo.model.Internship;
-import CareerLens.demo.payloads.InternshipDetailResponse;
-import CareerLens.demo.payloads.InternshipFilter;
-import CareerLens.demo.payloads.InternshipRequest;
-import CareerLens.demo.payloads.InternshipResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipDetailResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipFilter;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipRequest;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipResponse;
 import CareerLens.demo.repository.InternshipRepository;
 import CareerLens.demo.specification.InternshipSpecifications;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service

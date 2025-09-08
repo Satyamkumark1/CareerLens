@@ -2,7 +2,7 @@ package CareerLens.demo.controller;
 
 import CareerLens.demo.model.User;
 import CareerLens.demo.model.UserRole;
-import CareerLens.demo.payloads.CreateAdminRequest;
+import CareerLens.demo.payloads.userDTOs.CreateAdminRequest;
 import CareerLens.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,10 +1,10 @@
 package CareerLens.demo.controller;
 
 
-import CareerLens.demo.payloads.InternshipDetailResponse;
-import CareerLens.demo.payloads.InternshipFilter;
-import CareerLens.demo.payloads.InternshipRequest;
-import CareerLens.demo.payloads.InternshipResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipDetailResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipFilter;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipRequest;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipResponse;
 import CareerLens.demo.security.UserPrincipal;
 import CareerLens.demo.services.InternshipService;
 import jakarta.validation.Valid;

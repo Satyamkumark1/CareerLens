@@ -1,4 +1,4 @@
-package CareerLens.demo.payloads;
+package CareerLens.demo.payloads.userDTOs;
 
 
 import jakarta.validation.constraints.Email;

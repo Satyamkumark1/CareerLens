@@ -1,6 +1,6 @@
 package CareerLens.demo.controller;
-import CareerLens.demo.payloads.StudentProfileResponse;
-import CareerLens.demo.payloads.StudentResponseRequest;
+import CareerLens.demo.payloads.studentProfileDTOs.StudentProfileResponse;
+import CareerLens.demo.payloads.studentProfileDTOs.StudentResponseRequest;
 import CareerLens.demo.security.UserPrincipal;
 import CareerLens.demo.services.StudentProfileService;
 import jakarta.validation.Valid;

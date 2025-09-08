@@ -1,7 +1,7 @@
 package CareerLens.demo.services;
 
 
-import CareerLens.demo.payloads.UserDTO;
+import CareerLens.demo.payloads.userDTOs.UserDTO;
 import org.springframework.stereotype.Service;
 
 @Service

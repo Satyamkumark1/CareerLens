@@ -1,7 +1,7 @@
 package CareerLens.demo.services;
 
-import CareerLens.demo.payloads.StudentProfileResponse;
-import CareerLens.demo.payloads.StudentResponseRequest;
+import CareerLens.demo.payloads.studentProfileDTOs.StudentProfileResponse;
+import CareerLens.demo.payloads.studentProfileDTOs.StudentResponseRequest;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
 package CareerLens.demo.services;
 
-import CareerLens.demo.payloads.InternshipDetailResponse;
-import CareerLens.demo.payloads.InternshipFilter;
-import CareerLens.demo.payloads.InternshipRequest;
-import CareerLens.demo.payloads.InternshipResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipDetailResponse;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipFilter;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipRequest;
+import CareerLens.demo.payloads.InternshipDTOs.InternshipResponse;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

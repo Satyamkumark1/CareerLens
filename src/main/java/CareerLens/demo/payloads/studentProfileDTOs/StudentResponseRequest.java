@@ -1,4 +1,4 @@
-package CareerLens.demo.payloads;
+package CareerLens.demo.payloads.studentProfileDTOs;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
