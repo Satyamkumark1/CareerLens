@@ -35,4 +35,9 @@ public class User {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private StudentProfile studentProfile;
+
+
 }

@@ -1,6 +1,7 @@
 package CareerLens.demo.security;
 
 
+import CareerLens.demo.exceptions.ResourceNotFoundException;
 import CareerLens.demo.model.User;
 import CareerLens.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found with email: " + email)
-                );
+                .orElseThrow(()-> new ResourceNotFoundException("email","email",email));
 
         return UserPrincipal.create(user);
     }

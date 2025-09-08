@@ -1,8 +1,6 @@
 package CareerLens.demo.exceptions;
 
 
-import CareerLens.demo.exceptions.ResourceNotFoundException;
-import CareerLens.demo.payloads.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -31,15 +29,15 @@ public class MyGlobalExceptionHandler {
     }
 
 
-//    //Creating our own ResourceNotFoundException from ->  ResourceNotFoundException Class
-//    @ExceptionHandler(ResourceNotFoundException.class)
-//    public ResponseEntity<ApiResponse> myResourceNotFoundException(ResourceNotFoundException e){
-//
-//        String message = e.getMessage();
-//        ApiResponse apiResponse = new ApiResponse(message,false);
-//
-//        return  new ResponseEntity<>(apiResponse,HttpStatus.NOT_FOUND);
-//     }
+    //Creating our own ResourceNotFoundException from ->  ResourceNotFoundException Class
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<BadRequestException> myResourceNotFoundException(ResourceNotFoundException e){
+
+        String message = e.getMessage();
+        BadRequestException apiResponse = new BadRequestException(message);
+
+        return  new ResponseEntity<>(apiResponse,HttpStatus.NOT_FOUND);
+     }
 
      //Creating our own ApiException   from -> ApiException Class
 //     @ExceptionHandler(com.ecommerce.project.exception.ApiException.class)
@@ -47,7 +45,6 @@ public class MyGlobalExceptionHandler {
 //        String message = e.getMessage();
 //        return new ResponseEntity<>(message,HttpStatus.BAD_REQUEST);
 //     }
-
 
 
 

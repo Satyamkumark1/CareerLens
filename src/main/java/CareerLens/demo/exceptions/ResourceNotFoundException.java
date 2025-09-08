@@ -18,4 +18,10 @@ public class ResourceNotFoundException  extends  RuntimeException{
     }
 
 
+    public ResourceNotFoundException(String user, String userId, Long id) {
+        this.fieldName =user;
+        this.field = userId;
+        this.fieldId = id;
+
+    }
 }

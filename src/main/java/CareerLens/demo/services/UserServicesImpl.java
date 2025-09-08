@@ -1,7 +1,10 @@
 package CareerLens.demo.services;
 
+import CareerLens.demo.exceptions.ResourceNotFoundException;
+import CareerLens.demo.payloads.UserDTO;
 import CareerLens.demo.repository.UserRepository;
-import org.apache.catalina.User;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,17 +12,17 @@ import org.springframework.stereotype.Service;
 public class UserServicesImpl implements  UserServices{
 
     @Autowired
-    private UserRepository userRepositery;
+    private UserRepository userRepository;
+    @Autowired
+    private ModelMapper modelMapper;
+
 
     @Override
-    public User adduser(User user) {
+    public UserDTO getUserById(Long userId) {
+        CareerLens.demo.model.User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("user", "userId", userId));
 
-
-        return null;
+        return modelMapper.map(user, UserDTO.class);
     }
-
-
-
-
 
 }
