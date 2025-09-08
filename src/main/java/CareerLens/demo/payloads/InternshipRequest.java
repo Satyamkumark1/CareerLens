@@ -1,6 +1,4 @@
 package CareerLens.demo.payloads;
 
-public class UserDTO {
-
-
+public class InternshipRequest {
 }
