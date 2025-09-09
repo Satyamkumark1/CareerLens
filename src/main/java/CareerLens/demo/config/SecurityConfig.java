@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/auth/**", "/h2-console/**", "/api/admin/create").permitAll()
+                        .requestMatchers("/api/auth/**", "/h2-console/**", "/api/admin/create","/api/admin/hello").permitAll()
                         .anyRequest().authenticated()
                 );
 

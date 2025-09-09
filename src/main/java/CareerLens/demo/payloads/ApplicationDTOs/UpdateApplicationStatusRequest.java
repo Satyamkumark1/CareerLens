@@ -1,4 +1,12 @@
 package CareerLens.demo.payloads.ApplicationDTOs;
 
-public class UpdateApplicationStatuReques {
+import CareerLens.demo.model.ApplicationStatus;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Data
+public class UpdateApplicationStatusRequest {
+
+    @NotNull(message ="Status is requires" )
+    private ApplicationStatus status;
 }

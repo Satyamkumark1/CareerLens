@@ -7,6 +7,8 @@ import CareerLens.demo.payloads.InternshipDTOs.InternshipRequest;
 import CareerLens.demo.payloads.InternshipDTOs.InternshipResponse;
 import CareerLens.demo.security.UserPrincipal;
 import CareerLens.demo.services.InternshipService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,7 @@ import java.util.List;
 public class InternshipController {
 
     private final InternshipService internshipService;
+    private final ObjectMapper objectMapper;
 
     @GetMapping
     public ResponseEntity<Page<InternshipResponse>> getAllInternships(
@@ -60,9 +63,24 @@ public class InternshipController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<InternshipResponse> createInternship(@Valid @RequestBody InternshipRequest request) {
-        InternshipResponse internship = internshipService.createInternship(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(internship);
+    public ResponseEntity<?> createInternship(@RequestBody Object requestBody) {
+        try {
+            if (requestBody instanceof List) {
+                // Handle multiple internships
+                List<InternshipRequest> requests =
+                        objectMapper.convertValue(requestBody, new TypeReference<List<InternshipRequest>>() {});
+                List<InternshipResponse> responses = internshipService.createInternships(requests);
+                return new ResponseEntity<>(responses, HttpStatus.CREATED);
+            } else {
+                // Handle single internship
+                InternshipRequest request =
+                        objectMapper.convertValue(requestBody, InternshipRequest.class);
+                InternshipResponse response = internshipService.createInternship(request);
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>("Invalid request format: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 

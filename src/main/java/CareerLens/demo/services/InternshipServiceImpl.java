@@ -6,11 +6,13 @@ import CareerLens.demo.payloads.InternshipDTOs.InternshipDetailResponse;
 import CareerLens.demo.payloads.InternshipDTOs.InternshipFilter;
 import CareerLens.demo.payloads.InternshipDTOs.InternshipRequest;
 import CareerLens.demo.payloads.InternshipDTOs.InternshipResponse;
+import CareerLens.demo.repository.ApplicationRepository;
 import CareerLens.demo.repository.InternshipRepository;
 import CareerLens.demo.specification.InternshipSpecifications;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -26,6 +28,8 @@ public class InternshipServiceImpl implements InternshipService {
 
     private final InternshipRepository internshipRepository;
     private final ModelMapper modelMapper;
+    @Autowired
+    private ApplicationRepository applicationRepository;
 
     public Page<InternshipResponse> getAllInternships(InternshipFilter filter, Pageable pageable) {
         Specification<Internship> spec = Specification.where(InternshipSpecifications.isActive());
@@ -54,12 +58,12 @@ public class InternshipServiceImpl implements InternshipService {
 
     public InternshipDetailResponse getInternshipById(Long id, Long userId) {
         Internship internship = internshipRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Internship not found with id: " ,"", + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Internship not found with id: " ,"", id));
 
         InternshipDetailResponse response = modelMapper.map(internship, InternshipDetailResponse.class);
 
-        // For now, set hasApplied to false - we'll implement this in Step 5
-        response.setHasApplied(false);
+        // Check if user has applied to this internship
+        response.setHasApplied(hasUserApplied(id, userId));
 
         return response;
     }
@@ -117,11 +121,23 @@ public class InternshipServiceImpl implements InternshipService {
         return responses;
     }
 
+    @Override
+    public List<InternshipResponse> createInternships(List<InternshipRequest> requests) {
+        return List.of();
+    }
+
     public List<String> getAllStates() {
         return internshipRepository.findAllDistinctStates();
     }
 
     private InternshipResponse convertToResponse(Internship internship) {
         return modelMapper.map(internship, InternshipResponse.class);
+    }
+
+    public Boolean hasUserApplied(Long internshipId, Long userId) {
+        if (userId == null) {
+            return false;
+        }
+        return applicationRepository.existsByStudentUserIdAndInternshipId(userId, internshipId);
     }
 }

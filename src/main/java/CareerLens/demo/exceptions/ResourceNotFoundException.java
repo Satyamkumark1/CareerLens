@@ -1,27 +1,14 @@
 package CareerLens.demo.exceptions;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
-public class ResourceNotFoundException  extends  RuntimeException{
-    String fieldName;
-    String field;
-    Long fieldId;
-    String resourceName;
+public class ResourceNotFoundException extends RuntimeException {
+	public ResourceNotFoundException(String message) {
+		super(message);
+	}
 
-    public ResourceNotFoundException(String fieldName, String field, String resourceName) {
-        this.fieldName = fieldName;
-        this.field = field;
-        this.resourceName = resourceName;
-    }
-
-
-    public ResourceNotFoundException(String user, String userId, Long id) {
-        this.fieldName =user;
-        this.field = userId;
-        this.fieldId = id;
-
-    }
+	public ResourceNotFoundException(String resourceName, String fieldName, Object fieldValue) {
+		super(resourceName + " not found with " + fieldName + ": " + fieldValue);
+	}
 }

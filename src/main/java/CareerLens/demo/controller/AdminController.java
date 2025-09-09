@@ -59,4 +59,10 @@ public class AdminController {
         userRepository.save(admin);
         return ResponseEntity.ok("Admin created successfully");
     }
+
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello World";
+    }
 }

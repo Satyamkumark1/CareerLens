@@ -32,4 +32,6 @@ public interface InternshipService {
     List<String> getAllLocations();
 
     List<InternshipResponse> addMultile(@Valid List<InternshipRequest> request);
+
+    List<InternshipResponse> createInternships(List<InternshipRequest> requests);
 }
