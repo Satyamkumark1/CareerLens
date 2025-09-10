@@ -92,6 +92,7 @@ public class InternshipServiceImpl implements InternshipService {
         Internship internship = internshipRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Internship not found with id: " ,"", + id));
 
+                //setting the internship inActive
         internship.setIsActive(false);
         internshipRepository.save(internship);
         log.info("Internship soft-deleted: {}", internship.getTitle());

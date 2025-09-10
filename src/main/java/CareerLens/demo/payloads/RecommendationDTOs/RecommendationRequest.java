@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RecommendationRequestResponse {
+public class RecommendationRequest {
     private Long studentId;
     private String educationLevel;
     private List<String> skills;

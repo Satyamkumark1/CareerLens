@@ -1,4 +1,4 @@
-package CareerLens.demo.RecommendationDTOs;
+package CareerLens.demo.payloads.RecommendationDTOs;
 
 import lombok.Data;
 
@@ -11,9 +11,3 @@ public class PythonRecommendationResponse {
     private Long processingTimeMs;
 }
 
-@Data
-class RecommendationScore {
-    private Long internshipId;
-    private Double score;
-    private String reason;
-}

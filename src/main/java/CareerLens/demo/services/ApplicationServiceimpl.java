@@ -12,6 +12,7 @@ import CareerLens.demo.repository.StudentProfileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class ApplicationServiceimpl implements ApplicationService {
     private final StudentProfileRepository studentProfileRepository;
     private final InternshipRepository internshipRepository;
     private final ModelMapper modelMapper;
+    @Autowired
+    RecommendationService recommendationService;
 
     public List<ApplicationResponse> getUserApplications(Long userId) {
         List<Application> applications = applicationRepository.findByStudentUserId(userId);
@@ -77,6 +80,8 @@ public class ApplicationServiceimpl implements ApplicationService {
 
         Application savedApplication = applicationRepository.save(application);
         log.info("User {} applied to internship {}", userId, request.getInternshipId());
+        // After successful application, mark recommendation as applied
+        recommendationService.markAsApplied(userId, request.getInternshipId());
 
         return convertToResponse(savedApplication);
     }

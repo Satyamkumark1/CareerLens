@@ -1,4 +1,4 @@
-package CareerLens.demo.RecommendationDTOs;
+package CareerLens.demo.payloads.RecommendationDTOs;
 
 import lombok.Data;
 

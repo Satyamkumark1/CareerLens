@@ -1,0 +1,7 @@
+app:
+  python-service:
+    url: http://localhost:5000
+    timeout: 5000
+  recommendation:
+    max-recommendations: 5
+    min-confidence-score: 0.3
